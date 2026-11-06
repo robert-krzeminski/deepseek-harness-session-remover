@@ -1,4 +1,5 @@
 # deepseek-harness-session-remover
+*(linux-only)*
 
 Retire the session you are in — plus its forks — and move it out of DSH into a
 vault. A move, not a delete.
@@ -48,6 +49,9 @@ https://raw.githubusercontent.com/robert-krzeminski/deepseek-harness-session-rem
 ```
 tar -czf ~/.dsh-$(date +%Y%m%d-%H%M).tar.gz ~/.dsh
 ```
+## Linux-only
+
+As committed it needs a systemd user unit, so it's Linux-only. The only truly Linux-specific parts are the ExecStopPost trigger and the restart call; the retirement step itself is just a directory move, so a macOS/Windows version is plausible via a detached helper that waits for the dsh PID to exit. I can't test either platform, anyone who can test is welcome to contribute one.
 
 ## License
 
